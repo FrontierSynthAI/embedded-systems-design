@@ -8,7 +8,6 @@
 const static char *TAG = "THREE LEDs TOGGLE";
 
 class LEDsToggle {
-
 	private:
 		std::array<gpio_num_t,3U> pinsArray;
 		gpio_num_t ledRED;
