@@ -1,0 +1,13 @@
+idf_component_register(
+    SRCS 
+        hello_world_main.cpp
+        logging.cpp
+    INCLUDE_DIRS 
+        .
+        include
+    REQUIRES 
+        esp_adc 
+        esp_driver_gpio 
+        freertos 
+        esp_common
+)
