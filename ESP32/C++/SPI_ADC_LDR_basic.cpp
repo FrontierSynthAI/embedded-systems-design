@@ -48,9 +48,15 @@ class MCP3008 {
         int readRaw(uint8_t channel) {
             if (channel > 7) return -1;
 
-            // MCP3008 single-ended read:
-            // TX: [0x01, 0x80 | (channel<<4), 0x00]
-            // RX: data in rx[1] low 2 bits + rx[2]
+            /*
+            Byte     Bit Position   Value in tx   Purpose
+            Byte 0   [7:1]          0000000       Leading zeros (ignored by chip)
+                     [0]            1             START BIT
+            Byte 1   [7]            1             SGL/DIFF (1 = Single Ended)
+                     [6:4]          "D2, D1, D0"  Channel Address
+                     [3:0]          0000          Dont Care / Clocking
+            Byte 2   [7:0]          00000000      Clocking (To receive the 10-bit result)
+            */
             uint8_t tx[3] = {
                 0x01,
                 static_cast<uint8_t>(0x80 | (channel << 4)),
