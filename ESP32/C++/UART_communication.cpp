@@ -9,11 +9,11 @@
 static const char* TAG = "UART_EXAMPLE";
 
 // UART configuration
-#define UART_PORT_NUM      UART_NUM_1
-#define UART_BAUD_RATE     115200
-#define UART_TX_PIN        GPIO_NUM_17
-#define UART_RX_PIN        GPIO_NUM_16
-#define UART_BUF_SIZE      1024
+static constexpr uart_port_t PORT_NUM   = UART_NUM_1;
+static constexpr int       BAUD_RATE   = 115200;
+static constexpr gpio_num_t TX_PIN     = GPIO_NUM_17;
+static constexpr gpio_num_t RX_PIN     = GPIO_NUM_16;
+static constexpr size_t    BUF_SIZE    = 1024;
 
 class UARTHandler {
 public:
